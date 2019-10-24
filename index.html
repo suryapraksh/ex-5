@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       
+      Web Tech: <input type="text" id="web" /><br />
+      <br>
+      Database: <input type="text" id="data" /><br />
+…Your Grade is <span id="score"></span>. <br />
+<br>
+      <button onclick="calculate();">Get Grade!</button>
+      <br>
+    <h1>Pattern Design</h1>
+<div>
+Rows: <input type="text" id ="rows" />
+Columns: <input type="text" id ="columns" /> <br />
+<button onclick="design();">Design Pattern</button>
+</div>
+<div id="pattern"></div>
+     
+     
+     
+        <h1>Pizza Order Form</h1>
+        <fieldset>
+            Small pizza <input type="text" id="small" /><br />
+            <br>
+            Medium pizza <input type="text" id="medium" /><br />
+            <br>
+            Large pizza <input type="text" id="large" /><br />
+            <br>
+            Tip:
+<label><input type="radio" value="10" name="tip" id="r1" /> 10%</label>
+<label><input type="radio" value="15" name="tip" id="r2"  /> 15% </label>
+<label><input type="radio" value="20" name="tip" id="r3" /> 20%</label> <br />
+<button onclick="calculateorder();">Calculate Order</button>
+        </fieldset>
+        <p>
+        Cost of order:<span id="price"></span>
+        </p>
+       
+     
+     
+<fieldset> Convert <input type="number" id="data" min="0" />
+<select id="from">
+<option>Pounds</option>
+<option>Kilograms</option>
+</select>
+to
+<select id ="to">
+<option>Kilograms</option>
+<option>Pounds</option>
+</select>
+<button onclick="convert();">Calculate</button>
+answer: <span id="answer"></span>
+</fieldset>
+       <script>
+     alert("welcome");
+      var a = confirm("welcome");
+       var a = prompt("enter:");
+       document.write(a+"<br>");
+       document.write("string length"+a.length+"<br>");
+       var words = a.split(" ");
+       document.write("number of words"+words.length+"<br>");
+       document.write("length of each word:"+"<br>");
+       for(var i=0;i<words.length;i++)
+       {
+           document.write(words[i]+": "+words[i].length+" "+"<br>");
+       }
+       var b=0;
+        var c;
+        var d=0;
+        var e;
+       for(var i=0;i<words.length;i++)
+       {
+           if(words[i].length>b)
+           {
+               b=words[i].length;
+               c=i;
+           }
+           else{
+               continue;
+           }
+       }
+         d=words[0].length;
+        for(var i=0;i<words.length;i++)
+       {
+         
+           if(words[i].length<d)
+           {
+               d=words[i].length;
+               e=i;
+           }
+           else{
+               continue;
+           }
+       }
+       document.write("longest word:"+words[c]+"<br>");
+        document.write("shortest word:"+words[e]+"<br>");
+ 
+    function calculate(){
+        var web = document.getElementById("web").value;
+        var data = document.getElementById("data").value;
+        var score = (parseInt(web)+parseInt(data))/2;
+       
+        if(score>=100)
+        {
+           
+         document.getElementById("score").innerHTML = "O";
+        }
+        else if(score>=90 && score<95)
+        {
+          document.getElementById("score").innerHTML = "S";
+        }
+         else if(score>=80 && score<90)
+        {
+           document.getElementById("score").innerHTML = "A";
+        }
+         else if(score>=70 && score<80)
+        {
+            document.getElementById("score").innerHTML = "B";
+        }
+         else if(score>=60 && score<70)
+        {
+            document.getElementById("score").innerHTML = "C";
+        }
+         else if(score>=50 && score<60)
+        {
+            document.getElementById("score").innerHTML = "P";
+        }
+        else{
+            document.getElementById("score").innerHTML = "R";
+        }
+    }
+   function design()
+    {
+        var r = parseInt(document.getElementById("rows").value);
+        var c = parseInt(document.getElementById("columns").value);
+        for(var i=0;i<r;i++)
+        {
+            for(var j=0;j<c;j++)
+            {
+                  document.getElementById("pattern").innerHTML +=  <img src="DSC05934-2.jpg" alt=""/>;
+            }
+           document.getElementById("pattern").innerHTML +="<br>";
+        }
+     
+       
+       
+    }
+   
+       function calculateorder()
+        {
+            var sp = parseInt(document.getElementById("small").value);
+            var mp = parseInt(document.getElementById("medium").value);
+            var lp = parseInt(document.getElementById("large").value);
+            var tip=0;
+            if(document.getElementById("r1").checked==true)
+               tip =parseInt(document.getElementById("r1").value);
+           else if(document.getElementById("r2").checked==true)
+               tip =parseInt(document.getElementById("r2").value);
+            else if (document.getElementById("r3").checked==true)
+               tip =parseInt(document.getElementById("r3").value);
+               answer = sp*100+mp*200+lp*400;
+               var tax=answer*9/100;
+               answer=answer+tip+tax;
+               document.getElementById("price").innerHTML = answer;
+        }
+          function convert()
+          {
+              var index = document.getElementById("from").selectedIndex;
+              var value = document.getElementById("from")[index].value;
+              var index1 = document.getElementById("to").selectedIndex;
+              var value1 = document.getElementById("to")[index].value;
+              var data1 = parseInt(document.getElementById("data").value);
+              if(index==0)
+              {
+                  if(index1==0)
+                  {
+                      document.getElementById("answer").innerHTML = data1/2.2046;
+                  }
+                  else{
+                      document.getElementById("answer").innerHTML = data1;
+                  }
+              }
+              if(index==1)
+              {
+                  if(index1==1)
+                  {
+                      document.getElementById("answer").innerHTML = data1*2.2046;
+                  }
+                  else{
+                       document.getElementById("answer").innerHTML = data1;
+                  }
+              }
+             
+       
+          }
+       </script>
+    </body>
+   
+</html>
+
